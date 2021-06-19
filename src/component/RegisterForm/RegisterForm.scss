@@ -45,3 +45,15 @@ input[type='number']::-webkit-inner-spin-button {
     width: 40%;
   }
 }
+
+.register-button {
+  background-color: #d0bfff; /* Green */
+  border-radius: 0.1rem;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 2rem;
+}

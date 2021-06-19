@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Card from '../Card/Card';
 import Input from '../Input/Input';
-import CardInner, { defaultCardInfo } from '../CardInner/CardInner';
+import Button from '../Button/Button';
+import CardInner, { cardInnerProps, defaultCardInfo } from '../CardInner/CardInner';
 import './RegisterForm.scss';
 
 const RegisterForm = () => {
@@ -9,9 +10,16 @@ const RegisterForm = () => {
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    console.log(cardInfo);
     setCardInfo({ ...cardInfo, [name]: value });
   };
+
+  const onClickButton = () => {
+    const rawCards: string | null = window.localStorage.getItem('cards');
+    const cards: cardInnerProps[] = rawCards ? JSON.parse(rawCards) : [];
+    cards.push(cardInfo);
+    window.localStorage.setItem('cards', JSON.stringify(cards));
+  };
+
   return (
     <>
       <div id="register-page">
@@ -69,6 +77,9 @@ const RegisterForm = () => {
             </div>
           </div>
         </form>
+        <Button className="register-button" onClick={onClickButton}>
+          등록하기
+        </Button>
       </div>
     </>
   );

@@ -31,21 +31,21 @@ const CardInner = (cardInfo: cardInnerProps = defaultCardInfo) => {
   return (
     <>
       <div className="card-inner">
-        <div className="card-company">{cardInfo.cardCompany}</div>
+        <div className="card-company">{cardInfo.cardCompany ? cardInfo.cardCompany : 'CARD'}</div>
         <div className="card-ic-chip"></div>
         <div className="card-number">
-          <span className="card-number-segment">{cardInfo.cardNum1}</span>
+          <span className="card-number-segment">{cardInfo.cardNum1 ? cardInfo.cardNum1 : '____'}</span>
           <span>- </span>
-          <span className="card-number-segment">{cardInfo.cardNum2}</span>
+          <span className="card-number-segment">{cardInfo.cardNum2 ? cardInfo.cardNum2 : '____'}</span>
           <span>- </span>
-          <span className="card-number-segment">{cardInfo.cardNum3}</span>
+          <span className="card-number-segment">{cardInfo.cardNum3 ? cardInfo.cardNum3 : '____'}</span>
           <span>- </span>
-          <span className="card-number-segment">{cardInfo.cardNum4}</span>
+          <span className="card-number-segment">{cardInfo.cardNum4 ? cardInfo.cardNum4 : '____'}</span>
         </div>
         <div className="card-footer">
-          <span className="card-name">{cardInfo.name}</span>
+          <span className="card-name">{cardInfo.name ? cardInfo.name : 'NAME'}</span>
           <span className="card-expiry-date">
-            {cardInfo.expireMonth} / {cardInfo.expireYear}
+            {cardInfo.expireMonth ? cardInfo.expireMonth : 'MM'} / {cardInfo.expireYear ? cardInfo.expireYear : 'YY'}
           </span>
         </div>
       </div>
