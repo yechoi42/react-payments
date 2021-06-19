@@ -1,0 +1,47 @@
+@import '../../index.scss';
+
+.register-form input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  height: 2.5rem;
+}
+
+.register-item {
+  margin-top: 2rem;
+}
+
+.register-input-container {
+  height: 2.5rem;
+  background-color: #dee2e6;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+}
+
+.register-expiry-date-container {
+  width: 50%;
+}
+
+.register-card-number-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.register-card-number-input input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.register-expiry-date-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  input {
+    width: 40%;
+  }
+}

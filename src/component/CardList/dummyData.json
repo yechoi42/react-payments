@@ -1,0 +1,40 @@
+{
+  "cards": [
+    {
+      "cardCompany": "BC",
+      "name": "yeji",
+      "cardNum1": "1234",
+      "cardNum2": "2345",
+      "cardNum3": "3456",
+      "cardNum4": "4567",
+      "password": "99",
+      "cvc": "010",
+      "expireMonth": "12",
+      "expireYear": "22"
+    },
+    {
+      "cardCompany": "Shinhan",
+      "name": "zuno",
+      "cardNum1": "1234",
+      "cardNum2": "2345",
+      "cardNum3": "3456",
+      "cardNum4": "4567",
+      "password": "99",
+      "cvc": "777",
+      "expireMonth": "03",
+      "expireYear": "29"
+    },
+    {
+      "cardCompany": "NH",
+      "name": "jihyun",
+      "cardNum1": "1234",
+      "cardNum2": "2345",
+      "cardNum3": "3456",
+      "cardNum4": "4567",
+      "password": "99",
+      "cvc": "545",
+      "expireMonth": "01",
+      "expireYear": "25"
+    }
+  ]
+}
