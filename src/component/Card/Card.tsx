@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import classnames from 'classnames';
 import './Card.scss';
 
 interface cardProps {
@@ -9,7 +10,7 @@ interface cardProps {
 const Card = ({ className = 'card', children = undefined }: cardProps) => {
   return (
     <>
-      <div className={className}>{children}</div>
+      <div className={classnames('card', className)}>{children}</div>
     </>
   );
 };

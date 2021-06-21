@@ -12,7 +12,9 @@ const CardList = () => {
     return <></>;
   }
 
-  const cardComponents = rawCards['cards'].map((x: cardInnerProps) => Card({ children: CardInner(x) }));
+  const cardComponents = rawCards['cards'].map((x: cardInnerProps) =>
+    Card({ className: x.cardCompany, children: CardInner(x) }),
+  );
   // const cardComponents = '';
 
   return (

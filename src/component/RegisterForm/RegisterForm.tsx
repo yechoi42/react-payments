@@ -3,6 +3,7 @@ import Card from '../Card/Card';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
+import CardOptionButton from '../CardOptionButton/CardOptionButton';
 import CardInner, { cardInnerProps, defaultCardInfo } from '../CardInner/CardInner';
 import './RegisterForm.scss';
 
@@ -68,7 +69,7 @@ const RegisterForm = () => {
           />
         </Card>
         <Modal open={modalOpen} onClickClose={closeModal} header="카드 종류를 선택하세요.">
-          카드 종류를 선택하세요.
+          <CardOptionButton cardName="shinhan"></CardOptionButton>
         </Modal>
         <form className="register-form">
           <div className="register-item">

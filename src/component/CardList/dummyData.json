@@ -1,7 +1,7 @@
 {
   "cards": [
     {
-      "cardCompany": "BC",
+      "cardCompany": "bc",
       "name": "yeji",
       "cardNum1": "1234",
       "cardNum2": "2345",
@@ -14,7 +14,7 @@
       "expireYear": "22"
     },
     {
-      "cardCompany": "Shinhan",
+      "cardCompany": "shinhan",
       "name": "zuno",
       "cardNum1": "1234",
       "cardNum2": "2345",
@@ -27,7 +27,7 @@
       "expireYear": "29"
     },
     {
-      "cardCompany": "NH",
+      "cardCompany": "nh",
       "name": "jihyun",
       "cardNum1": "1234",
       "cardNum2": "2345",
