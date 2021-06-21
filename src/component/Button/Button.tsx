@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import './Button.scss';
 
 interface buttonProps {
   className?: string;
@@ -6,7 +7,7 @@ interface buttonProps {
   children?: ReactNode;
 }
 
-const Button = ({ className = 'button', onClick, children }: buttonProps) => {
+const Button = ({ className = 'Button', onClick, children }: buttonProps) => {
   return (
     <button className={className} onClick={onClick}>
       {children}

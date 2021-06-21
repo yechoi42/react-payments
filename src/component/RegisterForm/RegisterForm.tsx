@@ -4,17 +4,21 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import CardInner, { cardInnerProps, defaultCardInfo } from '../CardInner/CardInner';
 import './RegisterForm.scss';
-import classNames from 'classnames/bind';
-
-const styles = require('./RegisterForm.scss');
-const cx = classNames.bind(styles);
 
 const RegisterForm = () => {
   const [cardInfo, setCardInfo] = useState(defaultCardInfo);
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setCardInfo({ ...cardInfo, [name]: value });
+    const { name, value, maxLength } = e.target;
+    let newValue: string = value;
+
+    if (name === 'expireMonth' && value > '12') {
+      newValue = '0';
+    }
+    if (value.length > maxLength && maxLength !== -1) {
+      newValue = value.slice(0, maxLength);
+    }
+    setCardInfo({ ...cardInfo, [name]: newValue });
   };
 
   const onClickButton = () => {
@@ -22,6 +26,7 @@ const RegisterForm = () => {
     const cards: cardInnerProps[] = rawCards ? JSON.parse(rawCards) : [];
     cards.push(cardInfo);
     window.localStorage.setItem('cards', JSON.stringify(cards));
+    window.location.href = '/';
   };
 
   return (
@@ -45,22 +50,34 @@ const RegisterForm = () => {
         <form className="register-form">
           <div className="register-item">
             <label htmlFor="card-number">카드번호</label>
-            <div className={cx(['register-input-container', 'flex-row-spacebetween'])}>
-              <Input name="cardNum1" type="number" value={cardInfo.cardNum1} onChange={onChangeInput} />
+            <div className="register-input-container flex-row-spacebetween">
+              <Input name="cardNum1" type="number" value={cardInfo.cardNum1} maxLength={4} onChange={onChangeInput} />
               -
-              <Input name="cardNum2" type="number" value={cardInfo.cardNum2} onChange={onChangeInput} />
+              <Input name="cardNum2" type="number" value={cardInfo.cardNum2} maxLength={4} onChange={onChangeInput} />
               -
-              <Input name="cardNum3" type="number" value={cardInfo.cardNum3} onChange={onChangeInput} />
+              <Input name="cardNum3" type="number" value={cardInfo.cardNum3} maxLength={4} onChange={onChangeInput} />
               -
-              <Input name="cardNum4" type="number" value={cardInfo.cardNum4} onChange={onChangeInput} />
+              <Input name="cardNum4" type="number" value={cardInfo.cardNum4} maxLength={4} onChange={onChangeInput} />
             </div>
           </div>
           <div className="register-item register-expiry-date-container">
             <label htmlFor="expiry-date">만료일</label>
-            <div className={cx(['register-input-container', 'flex-row-spacebetween', 'w8rem'])}>
-              <Input name="expireMonth" type="number" value={cardInfo.expireMonth} onChange={onChangeInput} />
+            <div className="register-input-container flex-row-spacebetween w8rem">
+              <Input
+                name="expireMonth"
+                type="number"
+                value={cardInfo.expireMonth}
+                maxLength={2}
+                onChange={onChangeInput}
+              />
               /
-              <Input name="expireYear" type="number" value={cardInfo.expireYear} onChange={onChangeInput} />
+              <Input
+                name="expireYear"
+                type="number"
+                value={cardInfo.expireYear}
+                maxLength={2}
+                onChange={onChangeInput}
+              />
             </div>
           </div>
           <div className="register-item">
@@ -80,17 +97,19 @@ const RegisterForm = () => {
               name="cvc"
               type="number"
               value={cardInfo.cvc}
+              maxLength={3}
               onChange={onChangeInput}
             />
           </div>
           <div className="register-item">
             <label htmlFor="password">카드 비밀번호</label>
-            <div className={cx(['w10rem', 'flex-row-spacebetween'])}>
+            <div className="w10rem flex-row-spacebetween">
               <Input
                 className="register-input-container w2rem"
                 name="password1"
                 type="password"
                 value={cardInfo.password1}
+                maxLength={1}
                 onChange={onChangeInput}
               />
               <Input
@@ -98,12 +117,13 @@ const RegisterForm = () => {
                 name="password2"
                 type="password"
                 value={cardInfo.password2}
+                maxLength={1}
                 onChange={onChangeInput}
               />
               <Input
-                className="register-input-container w2rem text-center"
+                className="register-input-container w2rem"
                 name="password"
-                type="password"
+                type="string"
                 value="*"
                 onChange={onChangeInput}
                 readOption={true}
@@ -111,7 +131,7 @@ const RegisterForm = () => {
               <Input
                 className="register-input-container w2rem"
                 name="password"
-                type="password"
+                type="string"
                 value="*"
                 onChange={onChangeInput}
                 readOption={true}
