@@ -2,23 +2,35 @@ import React, { useState } from 'react';
 import Card from '../Card/Card';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
 import CardInner, { cardInnerProps, defaultCardInfo } from '../CardInner/CardInner';
 import './RegisterForm.scss';
 
 const RegisterForm = () => {
   const [cardInfo, setCardInfo] = useState(defaultCardInfo);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const checkCardNums = (): boolean => {
+    if (cardInfo.cardNum1.length === 4 && cardInfo.cardNum2.length === 4 && cardInfo.cardNum3.length === 4) {
+      return true;
+    }
+    return false;
+  };
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, maxLength } = e.target;
     let newValue: string = value;
 
-    if (name === 'expireMonth' && value > '12') {
-      newValue = '0';
-    }
     if (value.length > maxLength && maxLength !== -1) {
       newValue = value.slice(0, maxLength);
-    }
+    } // check length validation
+    if (name === 'expireMonth' && value > '12') {
+      newValue = '0';
+    } // check expire month validation
     setCardInfo({ ...cardInfo, [name]: newValue });
+    if (name === 'cardNum4' && value.length === 4 && checkCardNums()) {
+      openModal();
+    } // 카드 번호를 다 입력했을 때 모달을 띄움
   };
 
   const onClickButton = () => {
@@ -27,6 +39,14 @@ const RegisterForm = () => {
     cards.push(cardInfo);
     window.localStorage.setItem('cards', JSON.stringify(cards));
     window.location.href = '/';
+  };
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
   };
 
   return (
@@ -47,6 +67,9 @@ const RegisterForm = () => {
             expireYear={cardInfo.expireYear}
           />
         </Card>
+        <Modal open={modalOpen} onClickClose={closeModal} header="카드 종류를 선택하세요.">
+          카드 종류를 선택하세요.
+        </Modal>
         <form className="register-form">
           <div className="register-item">
             <label htmlFor="card-number">카드번호</label>
