@@ -1,34 +1,45 @@
 import React from 'react';
+import classNames from 'classnames/bind';
+
+const styles = require('./Input.scss');
+const cx = classNames.bind(styles);
 
 interface infoProps {
+  className?: string;
   name: string;
   type: string;
   value: string | number;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  readOption?: boolean;
 }
 
 const defaultInputInfo: infoProps = {
   name: '',
   type: '',
   value: '',
+  readOption: false,
 };
 
-const Input = (inputInfo: infoProps = defaultInputInfo) => {
-  if (inputInfo.onChange !== undefined) {
+const Input = ({ className, name, type, value, onChange, readOption }: infoProps = defaultInputInfo) => {
+  if (onChange !== undefined) {
     return (
       <>
-        <input
-          name={inputInfo.name}
-          type={inputInfo.type}
-          value={inputInfo.value}
-          onChange={inputInfo.onChange}
-        ></input>
+        <div className={cx([Input, className])}>
+          <input
+            className="text-center"
+            name={name}
+            type={type}
+            value={value}
+            onChange={onChange}
+            {...(readOption ? `'readOnly'` : '')}
+          ></input>
+        </div>
       </>
     );
   } else {
     return (
       <>
-        <input name={inputInfo.name} type={inputInfo.type} value={inputInfo.value}></input>
+        <input name={name} type={type} value={value}></input>
       </>
     );
   }

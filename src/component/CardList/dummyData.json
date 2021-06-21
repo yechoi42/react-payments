@@ -7,7 +7,8 @@
       "cardNum2": "2345",
       "cardNum3": "3456",
       "cardNum4": "4567",
-      "password": "99",
+      "password1": "9",
+      "password2": "0",
       "cvc": "010",
       "expireMonth": "12",
       "expireYear": "22"
@@ -19,7 +20,8 @@
       "cardNum2": "2345",
       "cardNum3": "3456",
       "cardNum4": "4567",
-      "password": "99",
+      "password1": "9",
+      "password2": "0",
       "cvc": "777",
       "expireMonth": "03",
       "expireYear": "29"
@@ -31,7 +33,8 @@
       "cardNum2": "2345",
       "cardNum3": "3456",
       "cardNum4": "4567",
-      "password": "99",
+      "password1": "9",
+      "password2": "0",
       "cvc": "545",
       "expireMonth": "01",
       "expireYear": "25"

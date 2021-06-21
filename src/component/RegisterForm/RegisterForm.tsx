@@ -4,6 +4,10 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import CardInner, { cardInnerProps, defaultCardInfo } from '../CardInner/CardInner';
 import './RegisterForm.scss';
+import classNames from 'classnames/bind';
+
+const styles = require('./RegisterForm.scss');
+const cx = classNames.bind(styles);
 
 const RegisterForm = () => {
   const [cardInfo, setCardInfo] = useState(defaultCardInfo);
@@ -31,7 +35,8 @@ const RegisterForm = () => {
             cardNum2={cardInfo.cardNum2}
             cardNum3={cardInfo.cardNum3}
             cardNum4={cardInfo.cardNum4}
-            password={cardInfo.password}
+            password1={cardInfo.password1}
+            password2={cardInfo.password2}
             cvc={cardInfo.cvc}
             expireMonth={cardInfo.expireMonth}
             expireYear={cardInfo.expireYear}
@@ -40,7 +45,7 @@ const RegisterForm = () => {
         <form className="register-form">
           <div className="register-item">
             <label htmlFor="card-number">카드번호</label>
-            <div className="register-input-container register-card-number-input">
+            <div className={cx(['register-input-container', 'flex-row-spacebetween'])}>
               <Input name="cardNum1" type="number" value={cardInfo.cardNum1} onChange={onChangeInput} />
               -
               <Input name="cardNum2" type="number" value={cardInfo.cardNum2} onChange={onChangeInput} />
@@ -52,7 +57,7 @@ const RegisterForm = () => {
           </div>
           <div className="register-item register-expiry-date-container">
             <label htmlFor="expiry-date">만료일</label>
-            <div className="register-input-container register-expiry-date-input">
+            <div className={cx(['register-input-container', 'flex-row-spacebetween', 'w8rem'])}>
               <Input name="expireMonth" type="number" value={cardInfo.expireMonth} onChange={onChangeInput} />
               /
               <Input name="expireYear" type="number" value={cardInfo.expireYear} onChange={onChangeInput} />
@@ -60,20 +65,57 @@ const RegisterForm = () => {
           </div>
           <div className="register-item">
             <label htmlFor="name">카드 소유자 이름</label>
-            <div className="register-input-container register-card-owner-input">
-              <Input name="name" type="string" value={cardInfo.name} onChange={onChangeInput} />
-            </div>
+            <Input
+              className="register-input-container w6rem"
+              name="name"
+              type="string"
+              value={cardInfo.name}
+              onChange={onChangeInput}
+            />
           </div>
           <div className="register-item">
             <label htmlFor="cvc">보안 코드(CVC/CVV)</label>
-            <div className="register-input-container register-security-code-input">
-              <Input name="cvc" type="number" value={cardInfo.cvc} onChange={onChangeInput} />
-            </div>
+            <Input
+              className="register-input-container w4rem"
+              name="cvc"
+              type="number"
+              value={cardInfo.cvc}
+              onChange={onChangeInput}
+            />
           </div>
           <div className="register-item">
             <label htmlFor="password">카드 비밀번호</label>
-            <div className="register-input-container register-password-input">
-              <Input name="password" type="password" value={cardInfo.password} onChange={onChangeInput} />
+            <div className={cx(['w10rem', 'flex-row-spacebetween'])}>
+              <Input
+                className="register-input-container w2rem"
+                name="password1"
+                type="password"
+                value={cardInfo.password1}
+                onChange={onChangeInput}
+              />
+              <Input
+                className="register-input-container w2rem"
+                name="password2"
+                type="password"
+                value={cardInfo.password2}
+                onChange={onChangeInput}
+              />
+              <Input
+                className="register-input-container w2rem text-center"
+                name="password"
+                type="password"
+                value="*"
+                onChange={onChangeInput}
+                readOption={true}
+              />
+              <Input
+                className="register-input-container w2rem"
+                name="password"
+                type="password"
+                value="*"
+                onChange={onChangeInput}
+                readOption={true}
+              />
             </div>
           </div>
         </form>

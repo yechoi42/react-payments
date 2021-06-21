@@ -27,3 +27,38 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+.w2rem {
+  width: 2rem;
+}
+
+.w4rem {
+  width: 4rem;
+}
+
+.w6rem {
+  width: 6rem;
+}
+
+.w8rem {
+  width: 8rem;
+}
+
+.w10rem {
+  width: 10rem;
+}
+
+.w12rem {
+  width: 12rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex-row-spacebetween {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

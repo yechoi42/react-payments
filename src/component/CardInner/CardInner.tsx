@@ -8,7 +8,8 @@ export interface cardInnerProps {
   cardNum2: string;
   cardNum3: string;
   cardNum4: string;
-  password: string;
+  password1: string;
+  password2: string;
   cvc: string;
   expireMonth: string;
   expireYear: string;
@@ -21,7 +22,8 @@ export const defaultCardInfo: cardInnerProps = {
   cardNum2: '',
   cardNum3: '',
   cardNum4: '',
-  password: '',
+  password1: '',
+  password2: '',
   cvc: '',
   expireMonth: '',
   expireYear: '',
